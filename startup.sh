@@ -40,7 +40,7 @@ chsh -s $(which zsh)
 echo -e "\033[1;34m...Done!\033[0m"
 
 # Symlink
-DOTFILES_DIR="$HOME/.dotfiles"
+DOTFILES_DIR="~/.dotfiles"
     # Check for and create parent directories if they do not exist
 mkdir -p ~/.aws
 mkdir -p ~/.config/nvim
@@ -61,4 +61,3 @@ ln -s $DOTFILES_DIR/.zsh/starship.zsh ~/.zsh/starship.zsh
 ln -s $DOTFILES_DIR/.zsh/wsl2fix.zsh ~/.zsh/wsl2fix.zsh
 ln -s $DOTFILES_DIR/.zshenv ~/.zshenv
 ln -s $DOTFILES_DIR/.zshrc ~/.zshrc
-ln -s $DOTFILES_DIR/startup.sh ~/startup.sh
