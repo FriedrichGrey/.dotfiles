@@ -8,7 +8,7 @@ echo -e "\033[1;34m...Done!\033[0m"
 
 # Install
 echo -e "\033[1;34mInstalling essentials...\033[0m"
-sudo apt install -y git nvim curl build-essential libc-dev cmake fzf ripgrep
+sudo apt install -y nvim curl build-essential libc-dev cmake fzf ripgrep
 echo -e "\033[1;34m...Done!\033[0m"
 
 
