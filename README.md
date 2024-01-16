@@ -22,7 +22,7 @@ sudo apt install git
 ### 2. **Clone the Repository**:
 - Clone the repository from GitHub by running:
 ```bash
-git clone https://github.com/FriedrichGrey/dotfiles.git ~
+git clone https://github.com/FriedrichGrey/dotfiles.git
 ```
 - This clones the repository into a `dotfiles` directory in your current working directory.
 
