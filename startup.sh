@@ -34,7 +34,8 @@ sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin d
 
 # Shell
 echo -e "\033[1;34mShell config...\033[0m"
-sudo apt install -y zsh starship
+sudo apt install -y zsh
+curl -sS https://starship.rs/install.sh | sh -y
 chsh -s $(which zsh)
 echo -e "\033[1;34m...Done!\033[0m"
 
