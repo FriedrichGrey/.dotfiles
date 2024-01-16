@@ -29,7 +29,7 @@ git clone https://github.com/FriedrichGrey/dotfiles.git
 ### 3. **Navigate to the Repository Directory**:
 - Change your current directory to the `dotfiles` directory:
 ```bash
-cd dotfiles
+cd .dotfiles
 ```
 
 ### 4. **Make the Script Executable** (if not already):
