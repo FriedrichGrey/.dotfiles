@@ -37,3 +37,30 @@ echo -e "\033[1;34mShell config...\033[0m"
 sudo apt install -y zsh starship
 chsh -s $(which zsh)
 echo -e "\033[1;34m...Done!\033[0m"
+
+# Symlink
+    # Function to create symbolic links
+link_file() {
+    local SRC="$1"
+    local DEST="$2"
+
+    # Create directory if it doesn't exist
+    mkdir -p "$(dirname "$DEST")"
+
+    # Create symbolic link
+    ln -sfn "$SRC" "$DEST"
+}
+
+    # Base directory for dotfiles
+DOTFILES_DIR="$HOME/.dotfiles"
+    # Creating Syminks
+link_file "$DOTFILES_DIR/.aws/config" "$HOME/.aws/config"
+link_file "$DOTFILES_DIR/.config/nvim" "$HOME/.config/nvim"
+link_file "$DOTFILES_DIR/.config/starship" "$HOME/.config/starship"
+link_file "$DOTFILES_DIR/.gitconfig" "$HOME/.gitconfig"
+link_file "$DOTFILES_DIR/.ssh/config" "$HOME/.ssh/config"
+link_file "$DOTFILES_DIR/.zsh" "$HOME/.zsh"
+link_file "$DOTFILES_DIR/.zshenv" "$HOME/.zshenv"
+link_file "$DOTFILES_DIR/.zshrc" "$HOME/.zshrc"
+
+echo "Dotfiles have been linked."
