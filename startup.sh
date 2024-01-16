@@ -39,28 +39,25 @@ chsh -s $(which zsh)
 echo -e "\033[1;34m...Done!\033[0m"
 
 # Symlink
-    # Function to create symbolic links
-link_file() {
-    local SRC="$1"
-    local DEST="$2"
-
-    # Create directory if it doesn't exist
-    mkdir -p "$(dirname "$DEST")"
-
-    # Create symbolic link
-    ln -sfn "$SRC" "$DEST"
-}
-
-    # Base directory for dotfiles
 DOTFILES_DIR="$HOME/.dotfiles"
-    # Creating Syminks
-link_file "$DOTFILES_DIR/.aws/config" "$HOME/.aws/config"
-link_file "$DOTFILES_DIR/.config/nvim" "$HOME/.config/nvim"
-link_file "$DOTFILES_DIR/.config/starship" "$HOME/.config/starship"
-link_file "$DOTFILES_DIR/.gitconfig" "$HOME/.gitconfig"
-link_file "$DOTFILES_DIR/.ssh/config" "$HOME/.ssh/config"
-link_file "$DOTFILES_DIR/.zsh" "$HOME/.zsh"
-link_file "$DOTFILES_DIR/.zshenv" "$HOME/.zshenv"
-link_file "$DOTFILES_DIR/.zshrc" "$HOME/.zshrc"
+    # Check for and create parent directories if they do not exist
+mkdir -p ~/.aws
+mkdir -p ~/.config/nvim
+mkdir -p ~/.config/starship
+mkdir -p ~/.ssh
+mkdir -p ~/.zsh
 
-echo "Dotfiles have been linked."
+    # Create symbolic links
+ln -s $DOTFILES_DIR/.aws/config ~/.aws/config
+ln -s $DOTFILES_DIR/.config/nvim/init.lua ~/.config/nvim/init.lua
+ln -s $DOTFILES_DIR/.config/starship/starship.toml ~/.config/starship/starship.toml
+ln -s $DOTFILES_DIR/.gitconfig ~/.gitconfig
+ln -s $DOTFILES_DIR/.ssh/config ~/.ssh/config
+ln -s $DOTFILES_DIR/.zsh/aliases.zsh ~/.zsh/aliases.zsh
+ln -s $DOTFILES_DIR/.zsh/functions.zsh ~/.zsh/functions.zsh
+ln -s $DOTFILES_DIR/.zsh/keybinds.zsh ~/.zsh/keybinds.zsh
+ln -s $DOTFILES_DIR/.zsh/starship.zsh ~/.zsh/starship.zsh
+ln -s $DOTFILES_DIR/.zsh/wsl2fix.zsh ~/.zsh/wsl2fix.zsh
+ln -s $DOTFILES_DIR/.zshenv ~/.zshenv
+ln -s $DOTFILES_DIR/.zshrc ~/.zshrc
+ln -s $DOTFILES_DIR/startup.sh ~/startup.sh
