@@ -2,13 +2,13 @@
 
 # Update
 echo -e "\033[1;34mUpdating and upgrading system...\033[0m"
-sudo apt update && apt upgrade
+sudo apt update && apt sudo upgrade -y
 echo -e "\033[1;34m...Done!\033[0m"
 
 
 # Install
 echo -e "\033[1;34mInstalling essentials...\033[0m"
-sudo apt install -y nvim curl build-essential libc-dev cmake fzf ripgrep
+sudo apt install -y neovim curl build-essential libc-dev cmake fzf ripgrep
 echo -e "\033[1;34m...Done!\033[0m"
 
 
@@ -17,7 +17,7 @@ echo -e "\033[1;34mDocerconfig...\033[0m"
 for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt remove $pkg; done
     # Add Docker's official GPG key:
 sudo apt update
-sudo apt install ca-certificates curl gnupg
+sudo apt install -y ca-certificates curl gnupg
 sudo install -m 0755 -d /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 sudo chmod a+r /etc/apt/keyrings/docker.gpg
@@ -29,7 +29,7 @@ echo \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt update
     # Install Docler packages
-sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 
 # Shell
