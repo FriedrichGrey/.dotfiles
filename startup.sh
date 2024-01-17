@@ -5,12 +5,36 @@
 mkdir -p ~/.aws
 mkdir -p ~/.config/starship
 mkdir -p ~/.config/nvim
-mkdir -p ~/.ssh
+
 mkdir -p ~/.zsh
+mkdir -p ~/.ssh
+
+mkdir -p ~/.config/nvim/lua
+mkdir -p ~/.config/nvim/lua/plugins/configs
+mkdir -p ~/.config/nvim/lua/plugins
+mkdir -p ~/.config/nvim/lua/core
 
     # Create symbolic links
+ln -s ~/.dotfiles/.config/nvim/.gitignore ~/.config/nvim/.gitignore
+ln -s ~/.dotfiles/.config/nvim/.ignore ~/.config/nvim/.ignore
+ln -s ~/.dotfiles/.config/nvim/.stylua.toml ~/.config/nvim/.stylua.toml
+
+# lua directory
+ln -s ~/.dotfiles/.config/nvim/lua/core ~/.config/nvim/lua/core
+ln -s ~/.dotfiles/.config/nvim/lua/plugins ~/.config/nvim/lua/plugins
+
+# Subdirectories and files inside lua/core
+ln -s ~/.dotfiles/.config/nvim/lua/core/bootstrap.lua ~/.config/nvim/lua/core/bootstrap.lua
+ln -s ~/.dotfiles/.config/nvim/lua/core/default_config.lua ~/.config/nvim/lua/core/default_config.lua
+ln -s ~/.dotfiles/.config/nvim/lua/core/init.lua ~/.config/nvim/lua/core/init.lua
+ln -s ~/.dotfiles/.config/nvim/lua/core/mappings.lua ~/.config/nvim/lua/core/mappings.lua
+ln -s ~/.dotfiles/.config/nvim/lua/core/utils.lua ~/.config/nvim/lua/core/utils.lua
+
+# Subdirectories and files inside lua/plugins
+ln -s ~/.dotfiles/.config/nvim/lua/plugins/init.lua ~/.config/nvim/lua/plugins/init.lua
+ln -s ~/.dotfiles/.config/nvim/lua/plugins/configs ~/.config/nvim/lua/plugins/configs
+
 ln -s ~/.dotfiles/.aws/config ~/.aws/config
-ln -s ~/.dotfiles/.config/nvim/init.lua ~/.config/nvim/init.lua
 ln -s ~/.dotfiles/.config/starship/starship.toml ~/.config/starship/starship.toml
 ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/.dotfiles/.ssh/config ~/.ssh/config
