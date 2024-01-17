@@ -5,5 +5,4 @@
 
 
 # Load Starship
-
 eval "$(starship init zsh)"

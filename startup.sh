@@ -8,7 +8,7 @@ echo -e "\033[1;34m...Done!\033[0m"
 
 # Install
 echo -e "\033[1;34mInstalling essentials...\033[0m"
-sudo apt install -y neovim curl build-essential libc-dev cmake fzf ripgrep
+sudo apt install -y curl build-essential libc-dev cmake fzf ripgrep
 echo -e "\033[1;34m...Done!\033[0m"
 
 
@@ -30,7 +30,6 @@ echo \
 sudo apt update
     # Install Docler packages
 sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-
 
 # Shell
 echo -e "\033[1;34mShell config...\033[0m"
@@ -61,3 +60,10 @@ ln -s ~/.dotfiles/.zsh/starship.zsh ~/.zsh/starship.zsh
 ln -s ~/.dotfiles/.zsh/wsl2fix.zsh ~/.zsh/wsl2fix.zsh
 ln -s ~/.dotfiles/.zshenv ~/.zshenv
 ln -s ~/.dotfiles/.zshrc ~/.zshrc
+
+# Neovim
+sudo apt install -y fuse
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+chmod u+x nvim.appimage
+sudo mv nvim.appimage /usr/local/bin/nvim
+nvim --headless "+Lazy! sync" +qa
