@@ -36,6 +36,7 @@ sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin d
 echo -e "\033[1;34mShell config...\033[0m"
 sudo apt install -y zsh
 curl -sS https://starship.rs/install.sh | sh
+mkdir -p ~/.config/starship
 starship preset gruvbox-rainbow -o ~/.config/starship/starship.toml
 chsh -s $(which zsh)
 echo -e "\033[1;34m...Done!\033[0m"
@@ -44,7 +45,6 @@ echo -e "\033[1;34m...Done!\033[0m"
     # Check for and create parent directories if they do not exist
 mkdir -p ~/.aws
 mkdir -p ~/.config/nvim
-mkdir -p ~/.config/starship
 mkdir -p ~/.ssh
 mkdir -p ~/.zsh
 

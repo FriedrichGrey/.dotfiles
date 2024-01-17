@@ -16,7 +16,10 @@ Git is required to clone the repository. Open your WSL terminal and execute the 
 - Since this is a plain Debian installation, first update your package list and then install git. Run the following commands:
 ```bash
 sudo apt update
-sudo apt install git
+```
+- Install git
+```bash
+sudo apt install git -y
 ```
 
 ### 2. **Clone the Repository**:
