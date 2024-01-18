@@ -4,15 +4,10 @@
     # Check for and create parent directories if they do not exist
 mkdir -p ~/.aws
 mkdir -p ~/.config/starship
-mkdir -p ~/.config/nvim
-mkdir -p ~/.config/nvim/lua/custom
 mkdir -p ~/.zsh
 mkdir -p ~/.ssh
 
     # Create symbolic links
-ln -s ~/.dotfiles/.config/nvim/lua/custom/chadrc.lua ~/.config/nvim/lua/custom/chadrc.lua
-ln -s ~/.dotfiles/.config/nvim/lua/custom/init.lua ~/.config/nvim/lua/custom/init.lua
-
 ln -s ~/.dotfiles/.aws/config ~/.aws/config
 ln -s ~/.dotfiles/.config/starship/starship.toml ~/.config/starship/starship.toml
 ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
@@ -34,7 +29,9 @@ echo -e "\033[1;34m...Done!\033[0m"
 
 # Install
 echo -e "\033[1;34mInstalling essentials...\033[0m"
-sudo apt install -y curl build-essential libc-dev cmake fzf ripgrep tar 
+for pkg in curl build-essential libc-dev cmake fzf ripgrep tar; do
+    dpkg -s $pkg &>/dev/null || sudo apt install -y $pkg
+done
 echo -e "\033[1;34m...Done!\033[0m"
 
 
@@ -59,16 +56,39 @@ sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin d
 
 # Shell
 echo -e "\033[1;34mShell config...\033[0m"
-sudo apt install -y zsh
-curl -sS https://starship.rs/install.sh | sh
-starship preset gruvbox-rainbow -o ~/.config/starship/starship.toml
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.zsh}/plugins/zsh-syntax-highlighting
-chsh -s $(which zsh)
+if ! dpkg -s zsh &>/dev/null; then
+    sudo apt install -y zsh
+    chsh -s $(which zsh)
+fi
+if [ ! -d "${ZSH_CUSTOM:-~/.zsh}/plugins/zsh-syntax-highlighting" ]; then
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.zsh}/plugins/zsh-syntax-highlighting
+fi
 echo -e "\033[1;34m...Done!\033[0m"
 
+# Starship
+if ! command -v starship &>/dev/null; then
+    echo -e "\033[1;34mInstalling Starship...\033[0m"
+    curl -sS https://starship.rs/install.sh | sh
+    echo -e "\033[1;34m...Done installing Starship!\033[0m"
+fi
+
+if [ ! -f ~/.config/starship/starship.toml ]; then
+    echo -e "\033[1;34mConfiguring Starship...\033[0m"
+    starship preset gruvbox-rainbow -o ~/.config/starship/starship.toml
+    echo -e "\033[1;34m...Done configuring Starship!\033[0m"
+fi
+
 # Neovim
-sudo apt install -y fuse
-curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-chmod u+x nvim.appimage
-sudo mv nvim.appimage /usr/local/bin/nvim
-git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
+if ! dpkg -s nvim &>/dev/null; then
+    sudo apt install -y fuse
+    curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+    chmod u+x nvim.appimage
+    sudo mv nvim.appimage /usr/local/bin/nvim
+fi
+if [ ! -d ~/.config/nvim ]; then
+    mkdir -p ~/.config/nvim
+    git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
+    mkdir -p ~/.config/nvim/custom
+    ln -s ~/.dotfiles/.config/nvim/lua/custom/chadrc.lua ~/.config/nvim/lua/custom/chadrc.lua
+    ln -s ~/.dotfiles/.config/nvim/lua/custom/init.lua ~/.config/nvim/lua/custom/init.lua
+fi
