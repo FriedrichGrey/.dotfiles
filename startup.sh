@@ -10,8 +10,8 @@ mkdir -p ~/.zsh
 mkdir -p ~/.ssh
 
     # Create symbolic links
-ln -s ~/.dotfiles/.config/nvim/lua/custom ~/.config/nvim/lua/custom/chadrc.lua
-ln -s ~/.dotfiles/.config/nvim/lua/custom ~/.config/nvim/lua/custom/init.lua
+ln -s ~/.dotfiles/.config/nvim/lua/custom/chadrc.lua ~/.config/nvim/lua/custom/chadrc.lua
+ln -s ~/.dotfiles/.config/nvim/lua/custom/init.lua ~/.config/nvim/lua/custom/init.lua
 
 ln -s ~/.dotfiles/.aws/config ~/.aws/config
 ln -s ~/.dotfiles/.config/starship/starship.toml ~/.config/starship/starship.toml
