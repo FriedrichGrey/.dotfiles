@@ -88,7 +88,7 @@ fi
 if [ ! -d ~/.config/nvim ]; then
     mkdir -p ~/.config/nvim
     git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
-    mkdir -p ~/.config/nvim/custom
-    ln -s ~/.dotfiles/.config/nvim/lua/custom/chadrc.lua ~/.config/nvim/lua/custom/chadrc.lua
-    ln -s ~/.dotfiles/.config/nvim/lua/custom/init.lua ~/.config/nvim/lua/custom/init.lua
+    # mkdir -p ~/.config/nvim/lua/custom
+    # ln -s ~/.dotfiles/.config/nvim/lua/custom/chadrc.lua ~/.config/nvim/lua/custom/chadrc.lua
+    # ln -s ~/.dotfiles/.config/nvim/lua/custom/init.lua ~/.config/nvim/lua/custom/init.lua
 fi
